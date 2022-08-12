@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  API_temp:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
@@ -15,5 +15,4 @@ services:
           memory: 200M
         reservations:
           memory: 50M
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
     container_name: container_API
