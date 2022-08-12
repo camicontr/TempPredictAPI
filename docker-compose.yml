@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  API_temp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 8000:8000
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 200M
+        reservations:
+          memory: 50M
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    container_name: container_API
