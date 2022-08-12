@@ -23,11 +23,6 @@ class Input(BaseModel):
         ...,
         description="Last 30 previous temperature values"
         )
-    time_steps: int = Field(
-        ...,
-        gt=0,
-        description="Number of temperature values to predict"
-        )
     
     @validator("date_init", pre=True)
     def parse_date(cls, value):
@@ -44,8 +39,7 @@ class Input(BaseModel):
                               27.5, 27.1, 26.8, 26.9, 26.6, 26.6, 26.6,
                               26.6, 26.3, 26.1, 27.3, 27.4, 27.4, 28.6,
                               28.6, 28.2, 28.8, 27.9, 27.5, 27.3, 27.2,
-                              27.1, 27.4],
-                "time_steps": 1,
+                              27.1, 27.4]
             }
         }
 

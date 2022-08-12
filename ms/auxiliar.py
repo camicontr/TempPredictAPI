@@ -11,7 +11,7 @@ import numpy as np
 import tensorflow as tf
 
 
-def predict_future(temp_prev: list, timesteps_to_predict: int):
+def predict_future(temp_prev: list, timesteps_to_predict: int=1):
 
     actual = scaler.transform(np.array(temp_prev).reshape(-1, 1)).flatten()
     for i in range(timesteps_to_predict):
@@ -26,10 +26,7 @@ def get_model_response(input: dict):
     temp_prev = input_dict.get('temp_back')
     timesteps = input_dict.get('time_steps')
     date =  input_dict.get('date_init')
-
-    prediction = predict_future(temp_prev, timesteps)
-    response = dict(zip([date + datetime.timedelta(hours = t+1) for t in range(timesteps)], 
-     prediction.ravel()[-timesteps:])) 
+    response = dict(zip([date + datetime.timedelta(hours=1)], predict_future(temp_prev)))
 
     return response
 
