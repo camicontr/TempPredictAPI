@@ -22,11 +22,11 @@ def predict_future(temp_prev: list, timesteps_to_predict: int=1):
 
 def get_model_response(input: dict):
     input_dict = input.dict() # from json object
-
     temp_prev = input_dict.get('temp_back')
-    timesteps = input_dict.get('time_steps')
-    date =  input_dict.get('date_init')
-    response = dict(zip([date + datetime.timedelta(hours=1)], predict_future(temp_prev)))
+    date = input_dict.get('date_init')
+
+    prediction = predict_future(temp_prev)
+    response = dict(zip([date + datetime.timedelta(hours=1)], prediction.ravel()[-1:])) 
 
     return response
 
