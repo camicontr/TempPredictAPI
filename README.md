@@ -17,7 +17,7 @@ git clone https://github.com/camicontr/TempPredictAPI.git
 ```
 
 ### Docker Installation
-To install ds4a on a docker container, run the following command:
+To install TempPredictAPI on a docker container, run the following command:
 
 ```bash
 docker-compose up -d --build
@@ -25,7 +25,7 @@ docker-compose up -d --build
 
 ## Usage
 ### Running the API
-To run the app in the Docker container, run the following command:
+To run the API in the Docker container, run the following command:
 
 ```bash
 docker start container_API
