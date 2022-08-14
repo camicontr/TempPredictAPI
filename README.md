@@ -1,7 +1,7 @@
 # TempPredictAPI
 
 ## Introduction 
-This is the repository for temperature predict using RNN with GRU units.
+This is the repository for the Next Hour Temperature Prediction API using RNN with GRU units. The input is a list with the temperature values of the last 30 hours and the end date of these.
 
 ## Depedencies
 Dependencies for Docker:
@@ -29,4 +29,10 @@ To run the API in the Docker container, run the following command:
 
 ```bash
 docker start container_API
+```
+
+then go to
+
+```bash
+http://localhost:8000/predict
 ```
