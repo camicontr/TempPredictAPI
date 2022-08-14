@@ -10,7 +10,7 @@ import tensorflow as tf
 #Auxiliar
 from predictions import plot_loss, plot_future, prediction, evaluate_prediction
 from model import create_gru, fit_model
-from Prepro import Prepro
+from prepro import Prepro
 from pickle import dump
 
 
