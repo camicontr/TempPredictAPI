@@ -26,7 +26,8 @@ def get_model_response(input: dict):
     date = input_dict.get('date_init')
 
     prediction = predict_future(temp_prev)
-    response = dict(zip([date + datetime.timedelta(hours=1)], prediction.ravel()[-1:])) 
+    response ={"date_pred": date + datetime.timedelta(hours=1),
+               "temp_pred": prediction.ravel()[-1:]}
 
     return response
 

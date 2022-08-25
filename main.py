@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field, validator
 
 #FastAPI
 from fastapi import Body
+from fastapi import status
 
 #Auxiliary
 from ms import app
@@ -44,29 +45,57 @@ class Input(BaseModel):
         }
 
 
-@app.get('/info')
-async def model_info():
-    # Return model information, version, how to call
+class Prediction(BaseModel):
+    date_pred: datetime = Field(
+        ...,
+        description="date of the temperature predict"
+        )
+    temp_pred: float = Field(...)
+
+
+@app.get(
+    path="/",
+    status_code=status.HTTP_200_OK,
+    tags=["Home"],
+    summary="Home from app"
+    )
+async def home():
+    """
+    Home
+
+    This is the home from app
+
+    No parameters 
+
+    Returns dictionary with model information, version
+    """
     return {
         "name": "RNN temperature prediction",
         "version": "v1.0.0"
     }
 
 
-@app.get('/health')
-async def service_health():
-    # Return service health
-    return {
-        "ok"
-    }
-
-
-@app.post('/predict')
+@app.post(
+    path='/predict',
+    response_model=Prediction,
+    status_code=status.HTTP_200_OK,
+    tags=["Predict"],
+    summary="Prediction"
+    )
 async def model_predict(
     input: Input = Body(
         ...
         )
 ):
-    # Predict with input
+    """
+    Predict
+
+    This is the path operation for temperature predict using the last 30 temperature values
+
+    - Body parameter
+        - **input** -> This is the class input with date init and last 30 temperature values 
+
+    Returns temperature prediction with your date information
+    """
     response = get_model_response(input)
     return response

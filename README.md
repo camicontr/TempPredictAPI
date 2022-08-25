@@ -34,5 +34,5 @@ docker start container_API
 then go to
 
 ```bash
-http://localhost:8000/predict
+http://localhost:8000/docs
 ```
