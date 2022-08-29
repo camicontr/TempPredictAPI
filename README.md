@@ -1,7 +1,7 @@
 # TempPredictAPI
 
 ## Introduction 
-This is the repository for the Next Hour Temperature Prediction API using RNN with GRU units. The input is a list with the temperature values of the last 30 hours and the end date of these.
+This is the repository for the Next Hour Temperature Prediction API using RNN with GRU units. With the last 30 temperature values, the temperature for the next hour is predicted with a root mean square error of 0.4 °C.
 
 ## Depedencies
 Dependencies for Docker:
